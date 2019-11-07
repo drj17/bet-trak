@@ -1,0 +1,11 @@
+{
+  "type": "postgres",
+  "port": 5432,
+  "host": "localhost",
+  "username": "postgres",
+  "password": "",
+  "database": "bettrak",
+  "synchronize": true,
+  "logging": true,
+  "entities": ["dist/**/*.entity.js"]
+}

@@ -7,18 +7,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const typeorm_1 = require("@nestjs/typeorm");
-const bet_module_1 = require("./bet/bet.module");
-let AppModule = class AppModule {
+let BetService = class BetService {
 };
-AppModule = __decorate([
-    common_1.Module({
-        imports: [typeorm_1.TypeOrmModule.forRoot(), bet_module_1.BetModule],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
-    })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+BetService = __decorate([
+    common_1.Injectable()
+], BetService);
+exports.BetService = BetService;
+//# sourceMappingURL=bet.service.js.map
