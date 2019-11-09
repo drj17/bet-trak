@@ -8,6 +8,7 @@ module.exports = {
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
   synchronize: true,
+  connectTimeout: 1500,
   logging: true,
   ssl: false,
   entities: ['dist/**/*.entity.js'],
