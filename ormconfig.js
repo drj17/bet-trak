@@ -9,6 +9,6 @@ module.exports = {
   database: process.env.DATABASE_NAME,
   synchronize: true,
   logging: true,
-  ssl: process.env.DATABASE_SSL,
+  ssl: false,
   entities: ['dist/**/*.entity.js'],
 };
