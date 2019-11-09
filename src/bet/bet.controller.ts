@@ -10,7 +10,7 @@ import {
 import { BetService } from './bet.service';
 import { BetDTO } from './bet.dto';
 
-@Controller('bet')
+@Controller('api/bet')
 export class BetController {
   constructor(private betService: BetService) {}
 

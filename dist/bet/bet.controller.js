@@ -69,7 +69,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BetController.prototype, "destroy", null);
 BetController = __decorate([
-    common_1.Controller('bet'),
+    common_1.Controller('api/bet'),
     __metadata("design:paramtypes", [bet_service_1.BetService])
 ], BetController);
 exports.BetController = BetController;
