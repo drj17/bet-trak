@@ -14,6 +14,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const bet_service_1 = require("./bet.service");
+const bet_dto_1 = require("./bet.dto");
+const validation_pipe_1 = require("../shared/validation.pipe");
 let BetController = class BetController {
     constructor(betService) {
         this.betService = betService;
@@ -25,13 +27,26 @@ let BetController = class BetController {
         return this.betService.create(data);
     }
     findOne(id) {
-        return this.betService.findOne(id);
+        const bet = this.betService.findOne(id);
+        if (!bet) {
+            throw new common_1.HttpException('Not Found', common_1.HttpStatus.NOT_FOUND);
+        }
+        return bet;
     }
     update(id, data) {
+        const bet = this.betService.findOne(id);
+        if (!bet) {
+            throw new common_1.HttpException('Not Found', common_1.HttpStatus.NOT_FOUND);
+        }
         return this.betService.update(id, data);
     }
     destroy(id) {
-        return this.betService.destroy(id);
+        const bet = this.betService.findOne(id);
+        if (!bet) {
+            throw new common_1.HttpException('Not Found', common_1.HttpStatus.NOT_FOUND);
+        }
+        this.betService.destroy(id);
+        return bet;
     }
 };
 __decorate([
@@ -42,9 +57,10 @@ __decorate([
 ], BetController.prototype, "findAll", null);
 __decorate([
     common_1.Post(),
+    common_1.UsePipes(new validation_pipe_1.ValidationPipe()),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [bet_dto_1.BetDTO]),
     __metadata("design:returntype", void 0)
 ], BetController.prototype, "create", null);
 __decorate([

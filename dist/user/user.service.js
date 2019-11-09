@@ -23,7 +23,7 @@ let UserService = class UserService {
     async login(data) {
         const { email, password } = data;
         const user = await this.userRepository.findOne({ where: { email } });
-        if (!user || (await user.comparePassword(password))) {
+        if (!user || !(await user.comparePassword(password))) {
             throw new common_1.HttpException('Invalid username/password', common_1.HttpStatus.BAD_REQUEST);
         }
         return user.toResponseObject();

@@ -15,29 +15,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const user_service_1 = require("./user.service");
 const user_dto_1 = require("./user.dto");
+const validation_pipe_1 = require("../shared/validation.pipe");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
     }
     login(data) {
-        this.userService.login(data);
+        return this.userService.login(data);
     }
     register(data) {
-        this.userService.register(data);
+        return this.userService.register(data);
     }
     fetchAll() {
-        this.userService.fetchAll();
+        return this.userService.fetchAll();
     }
 };
 __decorate([
-    common_1.Post('login'),
+    common_1.Post('/auth/login'),
+    common_1.UsePipes(new validation_pipe_1.ValidationPipe()),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [user_dto_1.UserDTO]),
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "login", null);
 __decorate([
-    common_1.Post('register'),
+    common_1.Post('/auth/register'),
+    common_1.UsePipes(new validation_pipe_1.ValidationPipe()),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [user_dto_1.UserDTO]),
@@ -50,7 +53,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "fetchAll", null);
 UserController = __decorate([
-    common_1.Controller('user'),
+    common_1.Controller(),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], UserController);
 exports.UserController = UserController;

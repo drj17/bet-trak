@@ -1,4 +1,4 @@
-export interface BetDTO {
-    wager: number;
-    bet: number;
+export declare class BetDTO {
+    readonly wager: number;
+    readonly line: number;
 }

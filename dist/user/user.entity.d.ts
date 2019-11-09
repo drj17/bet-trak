@@ -10,6 +10,6 @@ export declare class UserEntity {
         created: Date;
         token: string;
     };
-    comparePassword(attempt: string): Promise<any>;
+    comparePassword(attempt: string): Promise<boolean>;
     private get token();
 }

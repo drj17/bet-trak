@@ -14,10 +14,12 @@ class UserDTO {
 }
 __decorate([
     class_validator_1.IsNotEmpty(),
+    class_validator_1.IsEmail(),
     __metadata("design:type", String)
 ], UserDTO.prototype, "email", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
 ], UserDTO.prototype, "password", void 0);
 exports.UserDTO = UserDTO;

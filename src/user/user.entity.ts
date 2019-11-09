@@ -40,7 +40,7 @@ export class UserEntity {
     return responseObject;
   }
 
-  async comparePassword(attempt: string) {
+  async comparePassword(attempt: string): Promise<boolean> {
     return await bcrypt.compare(attempt, this.password);
   }
 
