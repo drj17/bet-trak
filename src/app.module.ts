@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BetModule } from './bet/bet.module';
+import { BetController } from './bet/bet.controller';
 
 @Module({
   imports: [TypeOrmModule.forRoot(), BetModule],
