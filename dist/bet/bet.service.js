@@ -31,6 +31,9 @@ let BetService = class BetService {
     async findOne(id) {
         return await this.betRepository.findOne(id);
     }
+    async findByUser(id) {
+        return await this.betRepository.find({ where: { user: { id } } });
+    }
     async update(id, data) {
         await this.betRepository.update(id, data);
         return this.betRepository.findOne(id);

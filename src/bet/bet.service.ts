@@ -25,6 +25,10 @@ export class BetService {
     return await this.betRepository.findOne(id);
   }
 
+  async findByUser(id: string) {
+    return await this.betRepository.find({ where: { user: { id } } });
+  }
+
   async update(id: string, data: Partial<BetDTO>) {
     await this.betRepository.update(id, data);
     return this.betRepository.findOne(id);

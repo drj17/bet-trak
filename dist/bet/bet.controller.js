@@ -33,6 +33,9 @@ let BetController = class BetController {
         }
         return bet;
     }
+    findByUser(id) {
+        return this.betService.findByUser(id);
+    }
     update(id, data) {
         const bet = this.betService.findOne(id);
         if (!bet) {
@@ -70,6 +73,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], BetController.prototype, "findOne", null);
+__decorate([
+    common_1.Get('user/:id'),
+    __param(0, common_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], BetController.prototype, "findByUser", null);
 __decorate([
     common_1.Put(':id'),
     __param(0, common_1.Param('id')), __param(1, common_1.Body()),

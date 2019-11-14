@@ -4,10 +4,12 @@ import {
   CreateDateColumn,
   Column,
   BeforeInsert,
+  OneToMany,
 } from 'typeorm';
 
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
+import { BetEntity } from 'src/bet/bet.entity';
 
 @Entity('user')
 export class UserEntity {
@@ -25,6 +27,9 @@ export class UserEntity {
 
   @Column('text')
   password: string;
+
+  @OneToMany(type => BetEntity, bet => bet.user, { cascade: true })
+  bets: BetEntity[];
 
   @BeforeInsert()
   async hashPassword() {

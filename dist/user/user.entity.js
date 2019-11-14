@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const bet_entity_1 = require("../bet/bet.entity");
 let UserEntity = class UserEntity {
     async hashPassword() {
         this.password = await bcrypt.hash(this.password, 10);
@@ -54,6 +55,10 @@ __decorate([
     typeorm_1.Column('text'),
     __metadata("design:type", String)
 ], UserEntity.prototype, "password", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => bet_entity_1.BetEntity, bet => bet.user, { cascade: true }),
+    __metadata("design:type", Array)
+], UserEntity.prototype, "bets", void 0);
 __decorate([
     typeorm_1.BeforeInsert(),
     __metadata("design:type", Function),

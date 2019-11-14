@@ -38,6 +38,11 @@ export class BetController {
     return bet;
   }
 
+  @Get('user/:id')
+  findByUser(@Param('id') id: string) {
+    return this.betService.findByUser(id);
+  }
+
   @Put(':id')
   update(@Param('id') id: string, @Body() data: Partial<BetDTO>) {
     const bet = this.betService.findOne(id);

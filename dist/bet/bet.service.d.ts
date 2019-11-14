@@ -7,6 +7,7 @@ export declare class BetService {
     findAll(): Promise<BetEntity[]>;
     create(data: BetDTO): Promise<BetEntity>;
     findOne(id: string): Promise<BetEntity>;
+    findByUser(id: string): Promise<BetEntity[]>;
     update(id: string, data: Partial<BetDTO>): Promise<BetEntity>;
     destroy(id: string): Promise<{
         deleted: boolean;

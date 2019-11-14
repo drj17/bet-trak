@@ -3,7 +3,9 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  ManyToOne,
 } from 'typeorm';
+import { UserEntity } from 'src/user/user.entity';
 
 @Entity('bet')
 export class BetEntity {
@@ -16,4 +18,7 @@ export class BetEntity {
   @Column('int') line: number;
 
   @Column({ nullable: true }) won: boolean;
+
+  @ManyToOne(type => UserEntity, user => user.bets)
+  user: UserEntity;
 }
