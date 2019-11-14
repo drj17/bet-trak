@@ -9,7 +9,7 @@ import {
 
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
-import { BetEntity } from 'src/bet/bet.entity';
+import { BetEntity } from '../bet/bet.entity';
 
 @Entity('user')
 export class UserEntity {

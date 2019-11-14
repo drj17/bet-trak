@@ -3,20 +3,24 @@ import { Repository } from 'typeorm';
 import { BetEntity } from './bet.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BetDTO } from './bet.dto';
+import { UserEntity } from '../user/user.entity';
 
 @Injectable()
 export class BetService {
   constructor(
     @InjectRepository(BetEntity)
     private betRepository: Repository<BetEntity>,
+    @InjectRepository(UserEntity)
+    private userRepository: Repository<UserEntity>,
   ) {}
 
   async findAll() {
     return await this.betRepository.find();
   }
 
-  async create(data: BetDTO) {
-    const bet = await this.betRepository.create(data);
+  async create(userId: string, data: BetDTO) {
+    const user = await this.userRepository.findOne({ where: { id: userId } });
+    const bet = await this.betRepository.create({ ...data, user });
     await this.betRepository.save(bet);
     return bet;
   }

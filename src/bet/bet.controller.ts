@@ -9,10 +9,13 @@ import {
   HttpException,
   HttpStatus,
   UsePipes,
+  UseGuards,
 } from '@nestjs/common';
 import { BetService } from './bet.service';
 import { BetDTO } from './bet.dto';
 import { ValidationPipe } from '../shared/validation.pipe';
+import { AuthGuard } from '../shared/auth.guard';
+import { User } from '../user/user.decorator';
 
 @Controller('api/bet')
 export class BetController {
@@ -24,9 +27,10 @@ export class BetController {
   }
 
   @Post()
+  @UseGuards(new AuthGuard())
   @UsePipes(new ValidationPipe())
-  create(@Body() data: BetDTO) {
-    return this.betService.create(data);
+  create(@User('id') user, @Body() data: BetDTO) {
+    return this.betService.create(user, data);
   }
 
   @Get(':id')

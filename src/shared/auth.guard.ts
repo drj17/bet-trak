@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
     if (!authorization) {
       return false;
     }
-    request.user = this.validateToken(authorization);
+    request.user = await this.validateToken(authorization);
     return true;
   }
 
