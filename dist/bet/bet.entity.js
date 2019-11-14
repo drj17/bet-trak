@@ -28,6 +28,10 @@ __decorate([
     typeorm_1.Column('int'),
     __metadata("design:type", Number)
 ], BetEntity.prototype, "line", void 0);
+__decorate([
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", Boolean)
+], BetEntity.prototype, "won", void 0);
 BetEntity = __decorate([
     typeorm_1.Entity('bet')
 ], BetEntity);

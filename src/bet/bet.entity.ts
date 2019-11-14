@@ -14,4 +14,6 @@ export class BetEntity {
   @Column('int') wager: number;
 
   @Column('int') line: number;
+
+  @Column({ nullable: true }) won: boolean;
 }

@@ -3,4 +3,5 @@ export declare class BetEntity {
     created: Date;
     wager: number;
     line: number;
+    won: boolean;
 }
