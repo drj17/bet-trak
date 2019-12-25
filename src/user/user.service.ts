@@ -38,4 +38,9 @@ export class UserService {
     const users = await this.userRepository.find();
     return users.map(user => user.toResponseObject(false));
   }
+
+  async fetchOne(id: string) {
+    const user = await this.userRepository.findOne(id);
+    return user.toResponseObject(true);
+  }
 }
